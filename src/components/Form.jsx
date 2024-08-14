@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Form = ({ formState, handleInputChange, handleSubmit }) => {
+const Form = ({ formState, handleInputChange, handleSubmit, isEditing, handleCancel }) => {
   return (
     <div>
-      <h2>Add New Hologram</h2>
+      <h2>{isEditing ? 'Edit Hologram' : 'Add New Hologram'}</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -33,7 +33,8 @@ const Form = ({ formState, handleInputChange, handleSubmit }) => {
           value={formState.extinctSince}
           onChange={handleInputChange}
         />
-        <button type="submit">Add</button>
+        <button type="submit">{isEditing ? 'Update' : 'Add'}</button>
+        {isEditing && <button type="button" onClick={handleCancel}>Cancel</button>}
       </form>
     </div>
   );
